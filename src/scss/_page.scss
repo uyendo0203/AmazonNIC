@@ -1,0 +1,21 @@
+@mixin title {
+    text-transform: uppercase;
+    font-size: vw(40px);
+    line-height: 1;
+    font-family: $BarlowBold;
+    @media (max-width: 767px) {
+        font-size: 24px;
+    }
+}
+@mixin des {
+    font-size: vw(20px);
+    line-height: 1.2;
+    font-family: $BarlowRegular;
+    @media (max-width: 767px) {
+        font-size: 16px;
+    }
+}
+
+.block1 {
+    position: relative;
+}

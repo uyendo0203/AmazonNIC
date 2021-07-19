@@ -1,7 +1,6 @@
 body {
     font-family: $MontserratLight;
-    font-weight: 400;
-    font-size: 20px;
+    font-size: vw(20px);
     padding: 0;
 }
 
@@ -63,7 +62,7 @@ button {
 }
 .main_content {
     @media (max-width: 767px) {
-        margin-top: 56px;
+        // margin-top: 56px;
     }
 }
 .loading {
@@ -311,7 +310,7 @@ button {
     text-align: center;
     background-color: #fff;
     color: #000000;
-    position: fixed;
+    // position: fixed;
     width: 100%;
     z-index: 999;
     top: 0;
@@ -356,11 +355,29 @@ button {
 
     &-logo {
         @include transition(all 0.3s ease);
-        width: vw(150px);
-        display: inline-block;
-
+        @include justify-content(center);
+        margin: vw(20px) auto;
         @media (max-width: 767px) {
-            max-width: 120px;
+            margin: 15px auto;
+        }
+        a {
+            margin: 0 vw(20px);
+            @media (max-width: 767px) {
+                margin: 0 5px;
+            }
+        }
+    }
+    &-logo-1 {
+        width: vw(138px);
+        @media (max-width: 767px) {
+            max-width: 100px;
+            width: 100%;
+        }
+    }
+    &-logo-2 {
+        width: vw(319px);
+        @media (max-width: 767px) {
+            max-width: 185px;
             width: 100%;
         }
     }
@@ -556,9 +573,13 @@ button {
 }
 
 .footer {
-    padding: 0.729vw 18vw 0.938vw 18vw;
+    padding: vw(25px);
+    font-size: vw(24px);
+    color: #000;
+    text-align: center;
+    font-family: $MontserratMedium;
     @media (max-width: 767px) {
-        padding: 35px;
+        padding: 20px;
     }
     &-wrap {
         @include align-items(center);
@@ -605,7 +626,7 @@ button {
 .button {
     min-width: vw(380px);
     font-size: vw(35px);
-    padding: vw(15px) vw(34px);
+    padding: vw(12px) vw(50px);
     border-radius: vw(39px);
     text-transform: uppercase;
     text-align: center;
@@ -628,25 +649,51 @@ button {
     &:disabled {
         cursor: no-drop;
     }
+    @mixin button-hover($bgColor, $textColor) {
+        transition: all 0.3s ease-out;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        &:hover {
+            color: $textColor;
+            cursor: pointer;
+        }
+
+        &::after {
+            content: " ";
+            position: absolute;
+            height: 0;
+            width: 100%;
+            background: $bgColor;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            @include transition(all 0.2s ease-out);
+            @include transform(rotateZ(45deg));
+        }
+
+        &:hover:after {
+            height: 100%;
+            @include transform(none);
+        }
+    }
+
     &-yellow {
         background: #f5911e;
         color: #0e384f;
-        @media (max-width: 767px) {
-            border-radius: 20px;
-        }
-        &:hover {
-            background: linear-gradient(90deg, #f5911e 0%, rgba(241, 201, 154, 0.659) 50%, #f5911e 100%);
-            text-decoration: none;
-        }
+        overflow: hidden;
+        transition: all 0.3s ease-out;
+        position: relative;
+        z-index: 1;
+        @include button-hover(#0e384f, #f5911e);
     }
     &-blue {
         font-family: $MontserratMedium;
         font-size: vw(16px);
         background: #115589;
         color: #fff;
-        &:hover {
-            text-decoration: none;
-        }
+        border: 1px solid #115589;
+        @include button-hover(#fff, #115589);
     }
     &-blue-outline {
         font-family: $MontserratMedium;
@@ -654,8 +701,6 @@ button {
         background: #fff;
         color: #000;
         border: 1px solid #115589;
-        &:hover {
-            text-decoration: none;
-        }
+        @include button-hover(#115589, #fff);
     }
 }

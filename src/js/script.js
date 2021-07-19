@@ -200,72 +200,6 @@ let sliderBlock1 = function () {
     });
 }
 
-let sliderBlock3 = function () {
-    if ($(".block3__tab-slider").length === 0) {
-        return false
-    }
-
-    $(".block3__tab-slider").not('.slick-initialized').slick({
-        arrows: true,
-        dots: false,
-        autoplay: false,
-        autoplaySpeed: 3000,
-        slidesToShow: 3,
-        centerMode: true,
-        slidesToScroll: 1,
-        infinite: true,
-        centerPadding: '270px',
-        responsive: [
-            {
-                breakpoint: 1400,
-                settings: {
-                    slidesToShow: 3,
-                    centerPadding: '100px',
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    centerPadding: '50px',
-                }
-            },
-            {
-                breakpoint: 575,
-                settings: {
-                    slidesToShow: 1,
-                    centerMode: false,
-                }
-            },
-        ]
-    });
-}
-let sliderBlock4 = function () {
-    if ($(".block4__slider").length === 0) {
-        return false
-    }
-
-    $(".block4__slider").not('.slick-initialized').slick({
-        arrows: true,
-        dots: true,
-        autoplay: false,
-        autoplaySpeed: 3000,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: true,
-        prevArrow: $('.block4 .slick-prev'),
-        nextArrow: $('.block4 .slick-next'),
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    arrows: false
-                }
-            },
-        ]
-    });
-}
 let sliderBlock5 = function () {
     if ($(".block5__slider").length === 0) {
         return false
@@ -277,94 +211,8 @@ let sliderBlock5 = function () {
         autoplay: false,
         autoplaySpeed: 3000,
         slidesToShow: 1,
+        centerMode: true,
         slidesToScroll: 1,
-        infinite: true,
-        prevArrow: $('.block5 .slick-prev'),
-        nextArrow: $('.block5 .slick-next'),
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    arrows: false
-                }
-            },
-        ]
-    });
-}
-let sliderBlock6 = function () {
-    if ($(".block6__slider").length === 0) {
-        return false
-    }
-
-    $(".block6__slider").not('.slick-initialized').slick({
-        arrows: true,
-        dots: true,
-        autoplay: false,
-        autoplaySpeed: 3000,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: true,
-        prevArrow: $('.block6 .slick-prev'),
-        nextArrow: $('.block6 .slick-next'),
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    arrows: false
-                }
-            },
-        ]
-    });
-}
-let sliderBlock8 = function () {
-    if ($(".block8__slider").length === 0) {
-        return false
-    }
-
-    $(".block8__slider").not('.slick-initialized').slick({
-        arrows: true,
-        dots: false,
-        autoplay: false,
-        autoplaySpeed: 3000,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        infinite: true,
-        variableWidth: true,
-        prevArrow: $('.block8 .slick-prev'),
-        nextArrow: $('.block8 .slick-next'),
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3
-                }
-            },
-            {
-                breakpoint: 575,
-                settings: {
-                    slidesToShow: 2,
-                    variableWidth: false,
-                }
-            },
-        ]
-    });
-}
-let sliderProduct = function () {
-    $('body')('#product-modal .product-modal__for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: true,
-        asNavFor: '#product-modal .product-modal__nav'
-    });
-    $('#product-modal .product-modal__nav').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        asNavFor: '#product-modal .product-modal__for',
-        dots: false,
-        arrows: false,
-        focusOnSelect: true
     });
 }
 
@@ -400,13 +248,8 @@ $(window).on("load", function () {
         }
     })
 
-    sliderBlock1()
-    sliderBlock3()
-    sliderBlock4()
+    // sliderBlock1()
     sliderBlock5()
-    sliderBlock6()
-    sliderBlock8()
-    // sliderProduct()
     Block7ValidateForm()
 });
 

@@ -200,6 +200,34 @@ let sliderBlock1 = function () {
     });
 }
 
+let sliderBlock3 = function () {
+    if ($(".block3__wrap").length === 0) {
+        return false
+    }
+
+    $(".block3__wrap").not('.slick-initialized').slick({
+        arrows: false,
+        dots: true,
+        autoplay: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplaySpeed: 3000,
+        responsive: [
+            {
+                breakpoint: 9999,
+                settings: "unslick"
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true
+                }
+            }
+        ]
+    });
+}
 let sliderBlock5 = function () {
     if ($(".block5__slider").length === 0) {
         return false
@@ -213,6 +241,14 @@ let sliderBlock5 = function () {
         slidesToShow: 1,
         centerMode: true,
         slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 767,
+                settings: {
+                    arrows: false,
+                }
+            }
+        ]
     });
 }
 
@@ -250,6 +286,7 @@ $(window).on("load", function () {
 
     // sliderBlock1()
     sliderBlock5()
+    sliderBlock3()
     Block7ValidateForm()
 });
 
@@ -285,4 +322,6 @@ $(window).on("scroll", function () {
 
 });
 
-$(window).on("resize", function () { });
+$(window).on("resize", function () {
+    sliderBlock3()
+});

@@ -75,15 +75,7 @@ function validateForm($submit, form) {
     updateView();
 }
 
-
-let MenuToggleMB = function () {
-    $('.header-menu__mb').click(function () {
-        $(this).toggleClass('active')
-        $('.header-menu__nav').toggleClass('active')
-    })
-}
-
-function goToByScroll(link) {
+let goToByScroll = function (link) {
 
     let space = 0
     switch (link) {
@@ -118,6 +110,15 @@ function goToByScroll(link) {
 
 }
 
+let goToBlock = function (eClick, eToGo) {
+    $(eClick).click(function (e) {
+        e.preventDefault()
+        $('html, body').animate({
+            scrollTop: $(eToGo).offset().top
+        }, 1000);
+    });
+}
+
 let Menu = function () {
 
     // on click menu header 
@@ -140,6 +141,13 @@ let Menu = function () {
             }
         }
 
+    })
+}
+
+let MenuToggleMB = function () {
+    $('.header-menu__mb').click(function () {
+        $(this).toggleClass('active')
+        $('.header-menu__nav').toggleClass('active')
     })
 }
 
@@ -199,7 +207,6 @@ let sliderBlock1 = function () {
         infinite: true,
     });
 }
-
 let sliderBlock3 = function () {
     if ($(".block3__wrap").length === 0) {
         return false
@@ -260,6 +267,7 @@ $(window).on("load", function () {
     GotoForm()
     Menu()
 
+
     // common 
     $(".fancybox").fancybox({
         type: "iframe",
@@ -288,6 +296,16 @@ $(window).on("load", function () {
     sliderBlock5()
     sliderBlock3()
     Block7ValidateForm()
+
+
+    // scroll to block when has 'key'
+    let keyFbId = window.location.href.indexOf('fbclid')
+    if (keyFbId != -1) {
+        $('html, body').animate({
+            scrollTop: $('.block3').offset().top - 50
+        }, 1000);
+    }
+
 });
 
 
